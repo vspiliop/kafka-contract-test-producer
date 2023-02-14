@@ -1,0 +1,28 @@
+@startuml
+!include ./sprites.puml
+
+package "Contract test" {
+  rectangle "trigger" <<$cog>> as tbl
+  component Instruments as inst {
+    rectangle "contracts/ example \n messages" as con
+  }
+  rectangle ti <<$kafka >>
+  rectangle verify <<$cog>> as ver
+}
+
+note left of tbl
+  Tiggers business logic
+end note
+
+database artifactory as ar {
+ rectangle jars
+}
+
+tbl -> inst
+inst --> ti: produces
+ver -> ar: intruments-stubs.jar
+ti -> ver
+ar --> inst: esp-kafka-schemas:7.4.0
+con -> ver: "verifies \ncontracts"
+
+@enduml

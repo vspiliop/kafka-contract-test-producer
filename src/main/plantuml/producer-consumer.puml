@@ -1,0 +1,29 @@
+@startuml
+!include ./sprites.puml
+
+package "ESP team" {
+  [Kafka Schemas]
+}
+
+package "CRD team" {
+  [Instruments]
+}
+
+package "MMC team" {
+  [Streams]
+}
+
+database Artifactory {
+ rectangle jars
+}
+
+rectangle ti <<$kafka>>
+
+[Instruments] --> ti: produces
+ti --> [Streams]: consumes
+
+Artifactory -up-> [Instruments]: esp-kafka-schemas:7.4.0
+Artifactory -up-> [Streams]: esp-kafka-schemas:7.3.0
+[Kafka Schemas] --> Artifactory: publishes
+
+@enduml

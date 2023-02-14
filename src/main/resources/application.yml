@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    producer:
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+logging:
+  level:
+    org.springframework.cloud.contract: debug
+    com.example.demo: debug

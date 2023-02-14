@@ -1,0 +1,28 @@
+@startuml
+!include ./sprites.puml
+
+package "Contract test" {
+  rectangle "stub producer" <<$cog>> as tp
+  rectangle ti <<$kafka >>
+  [Streams]
+  rectangle verify <<$cog>>
+}
+
+note bottom of tp
+  Using the stub producer
+  provided by Instruments:
+  The runtime producer
+end note
+
+database artifactory as ar {
+ rectangle jars
+}
+
+ar -> tp: instruments-stub.jar
+ar --> tp: esp-kafka-producer:7.3.0
+
+tp -right-> ti: produces
+ti -> [Streams]: consumes
+[Streams] -> verify
+
+@enduml

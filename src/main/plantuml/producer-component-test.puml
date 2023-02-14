@@ -1,0 +1,24 @@
+@startuml
+!include ./sprites.puml
+
+package "Component test" {
+  rectangle "trigger" <<$cog>> as tbl
+  rectangle ti <<$kafka >>
+  [Instruments]
+  rectangle verify <<$cog>>
+}
+
+note bottom of tbl
+  Tiggers business logic
+end note
+
+database artifactory as ar {
+ rectangle jars
+}
+
+tbl -> [Instruments]
+[Instruments] -> ti: produces
+ti -> verify
+ar -> [Instruments]: esp-kafka-schemas:7.4.0
+
+@enduml

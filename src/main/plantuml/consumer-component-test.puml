@@ -1,0 +1,27 @@
+@startuml
+!include ./sprites.puml
+'!pragma layout smetana
+
+package "Component test" {
+  rectangle "mock producer" <<$cog>> as tp
+  rectangle ti <<$kafka>>
+  [Streams]
+  rectangle verify <<$cog>>
+}
+
+note bottom of tp
+  Mocks Instruments service:
+  The runtime producer
+end note
+
+database artifactory as ar {
+ rectangle jars
+}
+
+ar -> tp: esp-kafka-producer:7.3.0
+
+tp -right-> ti: produces
+ti -> [Streams]: consumes
+[Streams] -> verify
+
+@enduml
