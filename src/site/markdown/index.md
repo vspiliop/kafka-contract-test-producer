@@ -62,18 +62,6 @@ Focusing on Instrument and Streams services.
 
 ![](images/src/main/plantuml/producer-consumer.png)
 
-```
-@startuml firstDiagram
-
-Alice -> Bob: Hello
-Bob -> Alice: Hi!
-
-@enduml
-```
-
-
-![](firstDiagram.svg)
-
 ## Component tests
 
 Currently, we do a lot of them.
