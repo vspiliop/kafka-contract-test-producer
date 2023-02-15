@@ -43,7 +43,7 @@
 
 ## The bigger picture
 
-<img height="396" src="images/testing-pyramid.png" width="885"/>
+
 
 ## Effective communication requirements
 
@@ -60,7 +60,7 @@ Focusing on Instrument and Streams services.
     - Different consumers may require different values of the same Enum field
   - Doing compatible avro schema changes usually leads to reducing avro required fields
 
-![](images/src/main/plantuml/producer-consumer.png)
+![displayed when maven site is generated](images/src/main/plantuml/producer-consumer.png)
 
 ## Component tests
 
@@ -68,7 +68,7 @@ Currently, we do a lot of them.
 
 #### Consumer
 
-![](images/src/main/plantuml/consumer-component-test.png)
+![displayed when maven site is generated](images/src/main/plantuml/consumer-component-test.png)
 
 Pros:
 - Exist on the Streams (consumer) bitbucket repo
@@ -86,7 +86,7 @@ Cons:
 
 #### Producer
 
-![](images/src/main/plantuml/producer-component-test.png)
+![displayed when maven site is generated](images/src/main/plantuml/producer-component-test.png)
 
 Pros:
 - Exist on the Instrument (producer) bitbucket repo
@@ -104,7 +104,7 @@ Cons:
 
 #### <a id="Producer-1"></a> Producer
 
-![](images/src/main/plantuml/producer-contract-test.png)
+![displayed when maven site is generated](images/src/main/plantuml/producer-contract-test.png)
 
 Pros:
 - Exist on the Instrument (producer) bitbucket repo
@@ -120,7 +120,7 @@ Pros:
 
 #### <a id="Consumer-1"></a> Consumer
 
-![](images/src/main/plantuml/consumer-contract-test.png)
+![displayed when maven site is generated](images/src/main/plantuml/consumer-contract-test.png)
 
 Pros:
 - Exist on the Instrument (producer) bitbucket repo
