@@ -61,7 +61,7 @@ Focusing on Instrument and Streams services.
   - Doing compatible avro schema changes usually leads to reducing avro required fields
 
 ![](images/src/main/plantuml/producer-consumer.png)
-<div hidden>
+
 ```
 @startuml firstDiagram
 
@@ -70,7 +70,7 @@ Bob -> Alice: Hi!
 
 @enduml
 ```
-</div>
+
 
 ![](firstDiagram.svg)
 
