@@ -62,6 +62,12 @@ Focusing on Instrument and Streams services.
 
 ![](images/src/main/plantuml/producer-consumer.png)
 
+../../src/main/plantuml/producer-consumer.puml
+
+```plantuml
+!include https://github.com/vspiliop/kafka-contract-test-producer/blob/main/src/main/plantuml/producer-consumer.puml
+```
+
 ## Component tests
 
 Currently, we do a lot of them.
