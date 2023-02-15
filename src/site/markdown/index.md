@@ -60,7 +60,7 @@ Focusing on Instrument and Streams services.
     - Different consumers may require different values of the same Enum field
   - Doing compatible avro schema changes usually leads to reducing avro required fields
 
-![](images/src/main/plantuml/producer-consumer.png "displayed when maven docs site is generated")
+![displayed when maven docs site is generated](images/src/main/plantuml/producer-consumer.png "producer consumer communication requirements")
 
 ## Component tests
 
