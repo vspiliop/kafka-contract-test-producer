@@ -6,7 +6,7 @@
     <skin>
         <groupId>com.bernardomg.maven.skins</groupId>
         <artifactId>docs-maven-skin</artifactId>
-        <version>2.3.0</version>
+        <version>${docs-maven-skin.version}</version>
     </skin>
 
     <custom>
@@ -54,6 +54,7 @@
         </menu>
         <menu name="Releases" inherit="bottom">
             <item name="Maven Central" href="${mavenURL}" />
+            <item name="GitHub" href="${githubArtifactURL}" />
         </menu>
         <menu name="Icons" inherit="bottom">
             <item name="Github" img="fab fa-github" href="${project.scm.url}" />

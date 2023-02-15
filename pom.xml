@@ -2,16 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.1-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.example</groupId>
+
+	<groupId>com.github.vspiliop</groupId>
 	<artifactId>kafka-contract-test-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kafka-contract-test-producer</name>
+	<inceptionYear>2022</inceptionYear>
+
+	<organization>
+		<name>Vassilis Spiliopoulos</name>
+		<url>https://uk.linkedin.com/in/vassilis-spiliopoulos-578343a</url>
+	</organization>
 
 	<developers>
 		<developer>
@@ -19,12 +27,14 @@
 			<email>2billy@gmail.com</email>
 			<organization>Personal project</organization>
 			<organizationUrl>https://uk.linkedin.com/in/vassilis-spiliopoulos-578343a</organizationUrl>
+			<timezone>Europe/London</timezone>
+			<properties>
+				<picUrl>https://avatars.githubusercontent.com/u/4169608?s=96&amp;v=4</picUrl>
+			</properties>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/vspiliop/kafka-contract-test-producer.git</connection>
-		<developerConnection>scm:git:https://github.com/vspiliop/kafka-contract-test-producer.git</developerConnection>
 		<url>https://github.com/vspiliop/kafka-contract-test-producer</url>
 	</scm>
 
@@ -39,7 +49,7 @@
 		<notifiers />
 	</ciManagement>
 
-	<url>https://github.com/vspiliop/kafka-contract-test-producer</url>
+	<url/>
 	<description>Demo project for Kafka producer contract testing</description>
 	<properties>
 		<java.version>19</java.version>
@@ -53,6 +63,8 @@
 		<spring-cloud-contract-maven-plugin.version>4.0.0</spring-cloud-contract-maven-plugin.version>
 		<plantuml-maven-plugin.version>1.2</plantuml-maven-plugin.version>
 		<plantuml.version>1.2023.0</plantuml.version>
+		<mavenURL>https://mvnrepository.com/artifact/${project.groupId}/${project.artifactId}</mavenURL>
+		<githubArtifactURL><![CDATA[https://github.com/vspiliop?tab=packages&amp;repo_name=kafka-contract-test-producer]]></githubArtifactURL>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -285,7 +297,7 @@
 		<site>
 			<id>kafka.producer.documentation</id>
 			<name>Kafka Producer Documentation</name>
-			<url>file:/Users/vassilisspiliopoulos/docs/${artifactId}/${version}</url>
+			<url>file:/Users/vassilisspiliopoulos/docs/${project.artifactId}/${project.version}</url>
 		</site>
 	</distributionManagement>
 	<pluginRepositories>
