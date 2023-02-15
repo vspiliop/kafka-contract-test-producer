@@ -43,7 +43,7 @@
 
 ## The bigger picture
 
-Contract tests lay between end-to-end and component tests.
+Contract tests sit between end-to-end and component tests.
 
 ![](images/src/main/plantuml/testing-pyramid.png)
 

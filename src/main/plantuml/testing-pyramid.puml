@@ -6,7 +6,7 @@
           |  end to end{tr}| API and UI level tests
           +----------------+ ----------------------------------------------------
         +--------------------+ --------------------------------------------------
-        |      contract{tr}  | Integration between services
+        | cBLK contract{tr}  | Integration between services
         +--------------------+ --------------------------------------------------
       +------------------------+ ------------------------------------------------
       |        component{tr}   | Functionality of single component (microservice)
