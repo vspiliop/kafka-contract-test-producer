@@ -12,17 +12,33 @@
 	<artifactId>kafka-contract-test-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kafka-contract-test-producer</name>
+
 	<developers>
 		<developer>
 			<name>Vassilis Spiliopoulos</name>
-			<email>vas.spiliopoulos@lme.com</email>
-			<organization>London Metal Exchange</organization>
-			<organizationUrl>https://www.lme.com</organizationUrl>
+			<email>2billy@gmail.com</email>
+			<organization>Personal project</organization>
+			<organizationUrl>https://uk.linkedin.com/in/vassilis-spiliopoulos-578343a</organizationUrl>
 		</developer>
 	</developers>
+
 	<scm>
+		<connection>scm:git:https://github.com/vspiliop/kafka-contract-test-producer.git</connection>
+		<developerConnection>scm:git:https://github.com/vspiliop/kafka-contract-test-producer.git</developerConnection>
 		<url>https://github.com/vspiliop/kafka-contract-test-producer</url>
 	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/vspiliop/kafka-contract-test-producer/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Github Actions</system>
+		<url>https://github.com/vspiliop/kafka-contract-test-producer/actions</url>
+		<notifiers />
+	</ciManagement>
+
 	<url>https://github.com/vspiliop/kafka-contract-test-producer</url>
 	<description>Demo project for Kafka producer contract testing</description>
 	<properties>
@@ -32,7 +48,7 @@
 		<avro.version>1.11.1</avro.version>
 		<confluent.version>7.3.1</confluent.version>
 		<maven-site-plugin.version>3.12.1</maven-site-plugin.version>
-		<docs-maven-skin.version>2.3.0</docs-maven-skin.version>
+		<docs-maven-skin.version>2.3.1</docs-maven-skin.version>
 		<wagon-ssh.version>3.5.3</wagon-ssh.version>
 		<spring-cloud-contract-maven-plugin.version>4.0.0</spring-cloud-contract-maven-plugin.version>
 		<plantuml-maven-plugin.version>1.2</plantuml-maven-plugin.version>
