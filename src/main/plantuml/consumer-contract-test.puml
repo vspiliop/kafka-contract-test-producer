@@ -3,7 +3,7 @@
 
 package "Contract test" {
   rectangle "stub producer" <<$cog>> as tp
-  rectangle ti <<$kafka >>
+  queue ti <<$kafka >>
   [Streams]
   rectangle verify <<$cog>>
 }

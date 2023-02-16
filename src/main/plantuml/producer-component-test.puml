@@ -3,7 +3,7 @@
 
 package "Component test" {
   rectangle "trigger" <<$cog>> as tbl
-  rectangle ti <<$kafka >>
+  queue ti <<$kafka >>
   [Instruments]
   rectangle verify <<$cog>>
 }

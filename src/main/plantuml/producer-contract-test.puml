@@ -6,7 +6,7 @@ package "Contract test" {
   component Instruments as inst {
     rectangle "contracts/ example \n messages" as con
   }
-  rectangle ti <<$kafka >>
+  queue ti <<$kafka >>
   rectangle verify <<$cog>> as ver
 }
 

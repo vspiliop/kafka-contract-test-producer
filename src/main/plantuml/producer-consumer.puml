@@ -17,7 +17,7 @@ database Artifactory {
  rectangle jars
 }
 
-rectangle ti <<$kafka>>
+queue ti <<$kafka>>
 
 [Instruments] --> ti: produces
 ti --> [Streams]: consumes
