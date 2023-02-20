@@ -17,11 +17,11 @@ site:run -o
 ## Generate Latex artifacts
 
 ```
-maven mathan:latex -o
+mvn mathan:latex -o
 ```
 
 ## Generate Plantuml diagrams
 
 ```
-plantuml:generate
+mvn plantuml:generate
 ```
