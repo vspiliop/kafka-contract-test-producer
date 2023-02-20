@@ -1,4 +1,4 @@
-## Generate Documentation
+## Generate documentation
 
 Generate maven documentation site from scratch.
 
