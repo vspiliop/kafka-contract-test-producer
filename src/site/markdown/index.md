@@ -1,32 +1,36 @@
-## Contract testing for Kafka event based services
+# Contract testing for Kafka event based services
 
-## Table of Contents
+# Table of Contents
 <!-- TOC -->
-  1. [Key takeaway](#Key-takeaway)
-  2. [Why?](#Why)
-  3. [The bigger picture](#The-bigger-picture)
-  4. [Effective communication requirements](#Effective-communication-requirements)
-  5. [Component tests](#Component-tests)
-      - [Consumer](#Consumer)
-      - [Producer](#Producer)
-  6. [Contract tests to the rescue](#Contract-tests-to-the-rescue)
-      - [Producer](#Producer-1)
-      - [Consumer](#Consumer-1)
-  7. [Show me the code](#Show-me-the-code)
-  8. [What's next?](#Whats-next)
+* [Contract testing for Kafka event based services](#Contract-testing-for-kafka-event-based-services)
+* [Table of Contents](#Table-of-contents)
+* [Key takeaway](#Key-takeaway)
+* [Why](#Why)
+* [The bigger picture](#The-bigger-picture)
+* [Effective communication requirements](#Effective-communication-requirements)
+  * [Consumer can read producer data](#Consumer-can-read-producer-data)
+  * [Consumer can deliver business value](#Consumer-can-deliver-business-value)
+    * [Component tests](#Component-tests)
+      * [Consumer](#Consumer)
+      * [Producer](#Producer)
+    * [Contract tests to the rescue](#Contract-tests-to-the-rescue)
+      * [Producer](#Producer-1)
+      * [Consumer](#Consumer-1)
+* [Show me the code](#Show-me-the-code)
+* [What's next?](#Whats-next)
 <!-- TOC -->
 
 | Disclaimer                      |
 |---------------------------------|
 | Opinionated content follows :-) | 
 
-## Key takeaway
+# Key takeaway
 
 .. and target of this presentation is try to persuade you that:
 
 `Contracts tests are a promising and effective way to reduce end-to-end tests.`
 
-## Why
+# Why
 
 .. reduce the number of end-to-end tests?
 
@@ -41,13 +45,13 @@
     - fixing
     - maintaining
 
-## The bigger picture
+# The bigger picture
 
 Contract tests sit between end-to-end and component tests.
 
 ![](images/src/main/plantuml/testing-pyramid.png)
 
-## Effective communication requirements
+# Effective communication requirements
 
 Focusing on Instrument and Streams services.
 
@@ -64,7 +68,17 @@ Focusing on Instrument and Streams services.
 
 ![](images/src/main/plantuml/producer-consumer.png)
 
-## Component tests
+## Consumer can read producer data
+
+The avro schemas used by the consumer and producer are compatible, so that consumer can de-serialise the bytes, serialised by producer.
+
+<img src="images/schema-compatibility-matrix.pdf" width="600"/>
+
+## Consumer can deliver business value
+
+The de-serialised event contains all necessary data for Streams to perform its business logic (has the proper semantics).
+
+### Component tests
 
 Currently, we do a lot of them.
 
@@ -102,7 +116,7 @@ Cons:
 - How does the producer know that it emits events that are actually what the consumer expects? I does not.
   - Streams requires a particular value of an enum field (e.g. `status` to be `FULFILLED`), but the producer never generates a `FULFILLED` event?
 
-## Contract tests to the rescue
+### Contract tests to the rescue
 
 #### <a id="Producer-1"></a> Producer
 
@@ -135,11 +149,11 @@ Pros:
 and an extra one:
 - No stall mocks issue!
 
-## Show me the code
+# Show me the code
 
 Open Intellij.. 
 
-## What's next?
+# What's next?
 
 - Should the producer have a contract per consumer's use case scenario?
   - The consuming service uses the sample event as is for testing these use cases

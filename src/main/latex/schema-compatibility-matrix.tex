@@ -1,0 +1,23 @@
+\documentclass[varwidth=\maxdimen]{standalone}
+\usepackage{diagbox}
+\usepackage{rotating}
+\begin{document}
+
+    \begin{table}[h!]
+        \begin{center}
+            \caption{Schema compatibility.}
+            \label{tab:table1}
+            \begin{tabular}{|l|cc|}
+                \hline
+                \diagbox{Consumer}{Producer} & X & X+1 \\
+                \hline
+                \hline
+                X   & Same schema & Backward compatible \\
+                X+1 & Forward compatible & Same schema \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+
+\end{document}

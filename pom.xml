@@ -63,6 +63,7 @@
 		<spring-cloud-contract-maven-plugin.version>4.0.0</spring-cloud-contract-maven-plugin.version>
 		<plantuml-maven-plugin.version>1.2</plantuml-maven-plugin.version>
 		<plantuml.version>1.2023.0</plantuml.version>
+		<mathan-latex-maven-plugin.version>1.0.2</mathan-latex-maven-plugin.version>
 		<mavenURL>https://mvnrepository.com/artifact/${project.groupId}/${project.artifactId}</mavenURL>
 		<githubArtifactURL><![CDATA[https://github.com/vspiliop?tab=packages&amp;repo_name=kafka-contract-test-producer]]></githubArtifactURL>
 	</properties>
@@ -84,11 +85,11 @@
 			<artifactId>avro</artifactId>
 			<version>${avro.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>io.confluent</groupId>
-			<artifactId>kafka-streams-avro-serde</artifactId>
-			<version>${confluent.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.confluent</groupId>-->
+<!--			<artifactId>kafka-streams-avro-serde</artifactId>-->
+<!--			<version>${confluent.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -246,6 +247,30 @@
 				</dependencies>
 			</plugin>
 			<plugin>
+				<groupId>io.mathan.maven</groupId>
+				<artifactId>mathan-latex-maven-plugin</artifactId>
+				<version>${mathan-latex-maven-plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<keepIntermediateFiles>true</keepIntermediateFiles>
+					<resources>
+						<excludes>
+							<exclude>**/*</exclude>
+						</excludes>
+					</resources>
+					<outputFormat>pdf</outputFormat>
+					<sourceDirectory>src/main/latex</sourceDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>latex</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -260,6 +285,14 @@
 								<copy todir="${basedir}/target/site-webapp/images">
 									<fileset dir="${basedir}/target/plantuml"
 											 includes="**/*.png"/>
+								</copy>
+								<copy todir="${basedir}/target/generated-site/resources/images">
+									<fileset dir="${basedir}/target/latex"
+											 includes="**/*.pdf"/>
+								</copy>
+								<copy todir="${basedir}/target/site-webapp/images">
+									<fileset dir="${basedir}/target/latex"
+											 includes="**/*.pdf"/>
 								</copy>
 							</target>
 						</configuration>
