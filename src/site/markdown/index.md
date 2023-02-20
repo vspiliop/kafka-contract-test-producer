@@ -70,13 +70,14 @@ Focusing on Instrument and Streams services.
 
 ## Consumer can read producer data
 
-The avro schemas used by the consumer and producer are compatible, so that consumer can de-serialise the bytes, serialised by producer.
+The avro schemas used by the `Streams Consumer` and `Instruments Producer` are compatible, so that `Streams` can de-serialise the bytes,
+serialised by `Instruments`.
 
-<img src="images/schema-compatibility-matrix.pdf" width="600"/>
+<img src="images/schema-compatibility-matrix.pdf" width="650"/>
 
 ## Consumer can deliver business value
 
-The de-serialised event contains all necessary data for Streams to perform its business logic (has the proper semantics).
+The de-serialised event contains all necessary data for `Streams` to perform its business logic (has the proper semantics).
 
 ### Component tests
 
