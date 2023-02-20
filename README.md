@@ -1,12 +1,12 @@
-# Generate Documentation
+## Generate Documentation
 
-Generates maven documentation site from scratch.
+Generate maven documentation site from scratch.
 
 ```
 clean compile site:site -o -Dmaven.test.skip
 ```
 
-# Run local Jetty
+## Run local Jetty
 
 Hosts the maven documentation site locally for development purposes.
 
@@ -14,13 +14,13 @@ Hosts the maven documentation site locally for development purposes.
 site:run -o
 ```
 
-# Generates Latex artifacts
+## Generate Latex artifacts
 
 ```
 maven mathan:latex -o
 ```
 
-# Generates Plantuml diagrams
+## Generate Plantuml diagrams
 
 ```
 plantuml:generate
