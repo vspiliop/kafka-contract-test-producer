@@ -3,7 +3,7 @@
 Generate maven documentation site from scratch.
 
 ```
-clean compile site:site -o -Dmaven.test.skip
+mvn clean compile site:site -o -Dmaven.test.skip
 ```
 
 ## Run local Jetty
@@ -11,7 +11,7 @@ clean compile site:site -o -Dmaven.test.skip
 Hosts the maven documentation site locally for development purposes.
 
 ```
-site:run -o
+mvn site:run -o
 ```
 
 ## Generate Latex artifacts
