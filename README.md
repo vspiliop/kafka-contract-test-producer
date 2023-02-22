@@ -9,7 +9,7 @@ mvn clean compile site:site -o -Dmaven.test.skip
 Generate and push maven documentation site to GitHub Pages.
 
 ```
-clean compile site site:stage scm-publish:publish-scm -o -Dmaven.test.skip
+mvn clean compile site site:stage scm-publish:publish-scm -o -Dmaven.test.skip
 ```
 
 ## Run local Jetty
