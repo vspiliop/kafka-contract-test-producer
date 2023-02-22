@@ -6,7 +6,7 @@ Generate locally maven documentation site from scratch.
 mvn clean compile site:site -o -Dmaven.test.skip
 ```
 
-## Generate and push maven documentation site to GitHub Pages
+Generate and push maven documentation site to GitHub Pages.
 
 ```
 clean compile site site:stage scm-publish:publish-scm -o -Dmaven.test.skip
