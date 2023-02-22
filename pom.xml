@@ -64,6 +64,7 @@
 		<plantuml-maven-plugin.version>1.2</plantuml-maven-plugin.version>
 		<plantuml.version>1.2023.0</plantuml.version>
 		<mathan-latex-maven-plugin.version>1.0.2</mathan-latex-maven-plugin.version>
+		<maven-scm-publish-plugin.version>3.1.0</maven-scm-publish-plugin.version>
 		<mavenURL>https://mvnrepository.com/artifact/${project.groupId}/${project.artifactId}</mavenURL>
 		<githubArtifactURL><![CDATA[https://github.com/vspiliop?tab=packages&amp;repo_name=kafka-contract-test-producer]]></githubArtifactURL>
 	</properties>
@@ -302,6 +303,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>${maven-scm-publish-plugin.version}</version>
+				<configuration>
+					<scmBranch>gh-pages</scmBranch>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
@@ -328,9 +337,8 @@
 	</repositories>
 	<distributionManagement>
 		<site>
-			<id>kafka.producer.documentation</id>
-			<name>Kafka Producer Documentation</name>
-			<url>file:/Users/vassilisspiliopoulos/docs/${project.artifactId}/${project.version}</url>
+			<id>github</id>
+			<url>scm:git:https://github.com/vspiliop/kafka-contract-test-producer.git</url>
 		</site>
 	</distributionManagement>
 	<pluginRepositories>
