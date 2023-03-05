@@ -71,6 +71,11 @@ public abstract class BaseClass {
 
 	/**
 	 * This method should trigger the business logic code that produces a proper TestCreatedEvent.
+	 * Usually this is a test, that will provide the required inputs to the producer, so that it
+	 * produces the proper event (aka TestCreatedEvent in this case).
+	 *
+	 * If the former input is provided by another service, then a 2nd contract test between that
+	 * 3rd service and the producer should be written.
 	 */
 	public void sendTestCreatedEvent() throws ExecutionException, InterruptedException, TimeoutException {
 		this.producer.sendTestCreatedEvent();
@@ -78,6 +83,11 @@ public abstract class BaseClass {
 
 	/**
 	 * This method should trigger the business logic code that produces a proper TestUpdatedEvent.
+	 * Usually this is a test, that will provide the required inputs to the producer, so that it
+	 * produces the proper event (aka TestUpdatedEvent in this case).
+	 *
+	 * If the former input is provided by another service, then a 2nd contract test between that
+	 * 3rd service and the producer should be written.
 	 */
 	public void sendTestUpdatedEvent() throws ExecutionException, InterruptedException, TimeoutException {
 		this.producer.sendTestUpdatedEvent();

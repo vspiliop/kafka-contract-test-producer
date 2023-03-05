@@ -74,6 +74,8 @@ The avro schemas used by the `Streams Consumer` and `Instruments Producer` are c
 serialised by `Instruments`.
 
 <img src="images/schema-compatibility-matrix.pdf" width="650"/>
+<br/>
+<img src="images/schema-evolution-matrix.pdf" width="1000"/>
 
 ## Consumer can deliver business value
 

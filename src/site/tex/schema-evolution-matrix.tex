@@ -1,0 +1,25 @@
+\documentclass[varwidth=\maxdimen]{standalone}
+\usepackage{diagbox}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{bbding}
+\usepackage{cancel}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\begin{document}
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|l|cccc|}
+                \hline
+                \diagbox{Compatibility Type}{Operation} & Add Field & Delete Field & Add Optional Field & Delete Optional Field \\
+                \hline
+                \hline
+                Backward & \bcancel{\checkmark} & \checkmark & \checkmark & \checkmark \\
+                Forward & \checkmark & \bcancel{\checkmark} & \checkmark & \checkmark \\
+                \hline
+            \end{tabular}
+        \end{center}\label{tab:table}
+    \end{table}
+
+
+\end{document}
