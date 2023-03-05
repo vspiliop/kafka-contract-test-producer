@@ -81,6 +81,10 @@ serialised by `Instruments`.
 
 The de-serialised event contains all necessary data for `Streams` to perform its business logic (has the proper semantics).
 
+This can be achieved in two ways:
+  - `Components tests`
+  - `Contract tests`
+
 ### Component tests
 
 Currently, we do a lot of them.
