@@ -3,7 +3,7 @@
 
 package "Contract test" {
   rectangle "trigger" <<$cog>> as tbl
-  component Instruments as inst {
+  component RefData as refd {
     rectangle "contracts/ example \n messages" as con
   }
   queue ti <<$kafka >>
@@ -18,11 +18,11 @@ database artifactory as ar {
  rectangle jars
 }
 
-tbl -> inst
-inst --> ti: produces
+tbl -> refd
+refd --> ti: produces
 ver -> ar: intruments-stubs.jar
 ti -> ver
-ar --> inst: esp-kafka-schemas:7.4.0
+ar --> refd: esp-kafka-schemas:7.4.0
 con -> ver: "verifies \ncontracts"
 
 @enduml

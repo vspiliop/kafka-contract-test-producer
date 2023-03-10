@@ -6,7 +6,7 @@ package "ESP team" {
 }
 
 package "CRD team" {
-  [Instruments]
+  [RefData]
 }
 
 package "MMC team" {
@@ -19,10 +19,10 @@ database Artifactory {
 
 queue ti <<$kafka>>
 
-[Instruments] --> ti: produces
+[RefData] --> ti: produces
 ti --> [Streams]: consumes
 
-Artifactory -up-> [Instruments]: esp-kafka-schemas:7.4.0
+Artifactory -up-> [RefData]: esp-kafka-schemas:7.4.0
 Artifactory -up-> [Streams]: esp-kafka-schemas:7.3.0
 [Kafka Schemas] --> Artifactory: publishes
 

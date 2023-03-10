@@ -10,7 +10,7 @@ package "Component test" {
 }
 
 note bottom of tp
-  Mocks Instruments service:
+  Mocks RedData service:
   The runtime producer
 end note
 

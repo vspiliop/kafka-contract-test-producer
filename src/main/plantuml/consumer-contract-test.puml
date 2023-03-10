@@ -10,7 +10,7 @@ package "Contract test" {
 
 note bottom of tp
   Using the stub producer
-  provided by Instruments:
+  provided by RefData:
   The runtime producer
 end note
 
@@ -18,7 +18,7 @@ database artifactory as ar {
  rectangle jars
 }
 
-ar -> tp: instruments-stub.jar
+ar -> tp: refdata-stub.jar
 ar --> tp: esp-kafka-producer:7.3.0
 
 tp -right-> ti: produces

@@ -15,6 +15,7 @@
       * [Producer](#Producer)
     * [Contract tests to the rescue](#Contract-tests-to-the-rescue)
       * [Producer](#Producer-1)
+        * [Triggering the producer](#Triggering-the-producer)
       * [Consumer](#Consumer-1)
 * [Show me the code](#Show-me-the-code)
 * [What's next?](#Whats-next)
@@ -53,9 +54,9 @@ Contract tests sit between end-to-end and component tests.
 
 # Effective communication requirements
 
-Focusing on Instrument and Streams services.
+Focusing on RefData and Streams services.
 
-1. Streams can de-serialise the event/ bytes, serialised by Instruments
+1. Streams can de-serialise the event/ bytes, serialised by RefData
 2. The de-serialised event contains all necessary data for Streams to perform its business logic (has the proper semantics)
 
 - (1) and (2) though related, are not the same!
@@ -70,8 +71,8 @@ Focusing on Instrument and Streams services.
 
 ## Consumer can read producer data
 
-The avro schemas used by the `Streams Consumer` and `Instruments Producer` are compatible, so that `Streams` can de-serialise the bytes,
-serialised by `Instruments`.
+The avro schemas used by the `Streams Consumer` and `RefData Producer` are compatible, so that `Streams` can de-serialise the bytes,
+serialised by `RefData`.
 
 <img src="images/schema-compatibility-matrix.pdf" width="650"/>
 <br/>
@@ -104,15 +105,15 @@ Pros:
 Cons:
 - Test mocks the actual producer
 - Stall mocks issues!
-  - Instruments (i.e. actual runtime producer) moves to a new esp-kafka-schemas version
-  - Instruments service removes an avro optional field that is required from the Streams (i.e. consumer) perspective
+  - RefData (i.e. actual runtime producer) moves to a new esp-kafka-schemas version
+  - RefData service removes an avro optional field that is required from the Streams (i.e. consumer) perspective
 
 #### Producer
 
 ![](images/src/main/plantuml/producer-component-test.png)
 
 Pros:
-- Exist on the Instrument (producer) bitbucket repo
+- Exist on the RefData (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -130,7 +131,7 @@ Cons:
 ![](images/src/main/plantuml/producer-contract-test.png)
 
 Pros:
-- Exist on the Instrument (producer) bitbucket repo
+- Exist on the RefData (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -141,12 +142,18 @@ Pros:
 - If producer by mistake stops following the contract producer build fails!
 - Meaning, the producer emits events that the consumers actually expect
 
+##### Triggering the producer
+
+How can we trigger the producer to emit the proper event, so that we verify it against its contract?
+
+
+
 #### <a id="Consumer-1"></a> Consumer
 
 ![](images/src/main/plantuml/consumer-contract-test.png)
 
 Pros:
-- Exist on the Instrument (producer) bitbucket repo
+- Exist on the RefData (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable

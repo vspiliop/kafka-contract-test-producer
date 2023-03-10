@@ -4,7 +4,7 @@
 package "Component test" {
   rectangle "trigger" <<$cog>> as tbl
   queue ti <<$kafka >>
-  [Instruments]
+  [RefData]
   rectangle verify <<$cog>>
 }
 
@@ -16,9 +16,9 @@ database artifactory as ar {
  rectangle jars
 }
 
-tbl -> [Instruments]
-[Instruments] -> ti: produces
+tbl -> [RefData]
+[RefData] -> ti: produces
 ti -> verify
-ar -> [Instruments]: esp-kafka-schemas:7.4.0
+ar -> [RefData]: esp-kafka-schemas:7.4.0
 
 @enduml
