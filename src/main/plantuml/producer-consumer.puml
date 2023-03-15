@@ -7,11 +7,28 @@ package "ESP team" {
 
 package "CRD team" {
   [RefData]
+  [Contract]
+  [RefData] --> [Contract]: queries
 }
+
+note top of [RefData]
+A consumer of Contract and
+a producer to Streams
+end note
+
+note left of [Contract]
+A producer
+to RefData
+end note
 
 package "MMC team" {
   [Streams]
 }
+
+note right of [Streams]
+A consumer
+of RefData
+end note
 
 database Artifactory {
  rectangle jars

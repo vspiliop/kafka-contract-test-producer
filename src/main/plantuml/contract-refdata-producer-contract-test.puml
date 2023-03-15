@@ -1,0 +1,50 @@
+@startuml
+!include ./sprites.puml
+
+package "Contract test" as contractTest{
+  rectangle "test code" <<$cog>> as tst
+    database "H2 Database" as db {
+     rectangle contracts {
+        rectangle c1
+     }
+     rectangle outbox {
+      rectangle o1
+     }
+     o1 -> c1
+    }
+
+  component RefData as refd {
+    rectangle "contracts/ example \n messages" as con
+  }
+  queue ti <<$kafka>>
+  rectangle verify <<$cog>> as ver
+  note bottom of db
+   Contract service database
+  end note
+}
+
+note left of tst
+    Triggers business logic
+    by providing the "given" and "when"
+    of contract test
+end note
+
+note bottom of ver
+  Test code that verifies
+  produced contract event
+  follows advertised contract
+end note
+
+database artifactory as ar {
+ rectangle jars
+}
+
+tst --> db: creates schema \n and inserts c1 and o1
+refd --> ti: produces
+ver -> ar: intruments-stubs.jar
+ti -> ver
+ar --> refd: esp-kafka-schemas:7.4.0
+con -> ver: "verifies \ncontracts"
+refd --> db: queries
+
+@enduml

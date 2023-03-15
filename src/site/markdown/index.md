@@ -54,7 +54,7 @@ Contract tests sit between end-to-end and component tests.
 
 # Effective communication requirements
 
-Focusing on RefData and Streams services.
+Focusing on `RefData` and `Streams` services.
 
 1. Streams can de-serialise the event/ bytes, serialised by RefData
 2. The de-serialised event contains all necessary data for Streams to perform its business logic (has the proper semantics)
@@ -126,6 +126,21 @@ Cons:
 
 ### Contract tests to the rescue
 
+#### <a id="Consumer-1"></a> Consumer
+
+![](images/src/main/plantuml/consumer-contract-test.png)
+
+Pros:
+- Exist on the RefData (producer) bitbucket repo
+- Run as part of the build process
+- Fast
+- Stable
+- Isolated
+- Easy to set up
+
+and an extra one:
+- No stall mocks issue!
+
 #### <a id="Producer-1"></a> Producer
 
 ![](images/src/main/plantuml/producer-contract-test.png)
@@ -146,22 +161,17 @@ Pros:
 
 How can we trigger the producer to emit the proper event, so that we verify it against its contract?
 
+> Generate RefData Producer input data as part of the contract test
 
+![](images/src/main/plantuml/contract-refdata-producer-contract-test.png)
 
-#### <a id="Consumer-1"></a> Consumer
+Do we have a guarantee:
+- that the input data (`c1` and `o1`) used are actually provided during runtime?
+- or even that the `DB schema` is correct?
 
-![](images/src/main/plantuml/consumer-contract-test.png)
+> No! We have to add an extra contract test!
 
-Pros:
-- Exist on the RefData (producer) bitbucket repo
-- Run as part of the build process
-- Fast
-- Stable
-- Isolated
-- Easy to set up
-
-and an extra one:
-- No stall mocks issue!
+![](images/src/main/plantuml/contract-refdata-producer-contract-test-2.png)
 
 # Show me the code
 
