@@ -41,7 +41,7 @@ database artifactory as ar {
 
 tst --> db: creates schema \n and inserts c1 and o1
 refd --> ti: produces
-ver -> ar: intruments-stubs.jar
+ver -> ar: refdata-stubs.jar
 ti -> ver
 ar --> refd: esp-kafka-schemas:7.4.0
 con -> ver: "verifies \ncontracts"
