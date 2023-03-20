@@ -150,6 +150,9 @@
                 <version>${spring-cloud-contract-maven-plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <incrementalContractTests>false</incrementalContractTests>
+                    <incrementalContractStubs>false</incrementalContractStubs>
+                    <incrementalContractStubsJar>false</incrementalContractStubsJar>
                     <testFramework>JUNIT5</testFramework>
                     <baseClassForTests>com.example.demo.BaseClass</baseClassForTests>
                 </configuration>
