@@ -65,6 +65,7 @@
         <plantuml.version>1.2023.0</plantuml.version>
         <latex-maven-plugin.version>1.2</latex-maven-plugin.version>
         <maven-scm-publish-plugin.version>3.1.0</maven-scm-publish-plugin.version>
+        <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
         <mavenURL>https://mvnrepository.com/artifact/${project.groupId}/${project.artifactId}</mavenURL>
         <githubArtifactURL>
             <![CDATA[https://github.com/vspiliop?tab=packages&amp;repo_name=kafka-contract-test-producer]]></githubArtifactURL>
@@ -307,6 +308,24 @@
             </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                            <report>property-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
     <repositories>
         <repository>
             <id>confluent</id>
