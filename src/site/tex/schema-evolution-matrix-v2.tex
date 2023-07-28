@@ -1,0 +1,34 @@
+\documentclass[varwidth=\maxdimen]{standalone}
+\usepackage{diagbox}
+\usepackage{rotating}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{bbding}
+\usepackage{cancel}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\begin{document}
+    \begin{table}[h!]
+        \begin{center}
+                \begin{tabular}{|l|cc|}
+                    \hline
+                    \diagbox{Compatibility Type}{Operation} & Backward & Forward \\
+                    \hline
+                    \hline
+                    Add mandatory field & \bcancel{\checkmark} & \checkmark \\
+                    Delete mandatory field & \checkmark & \bcancel{\checkmark} \\
+                    Add nullable (aka optional) Field & \checkmark & \bcancel{\checkmark} \\
+                    Delete nullable (aka optional) Field & \checkmark & \bcancel{\checkmark} \\
+                    Mandatory field to nullable & \checkmark & \bcancel{\checkmark} \\
+                    Adding default value to mandatory field & \checkmark & \checkmark \\
+                    Enum with default value: Add new value & \checkmark & \checkmark \\
+                    Enum with default value: Removing value & \checkmark & \checkmark \\
+                    Enum without default value: Making it default & \checkmark & \bcancel{\checkmark} \\
+                    Enum without default value: Add new value & \checkmark & \bcancel{\checkmark} \\
+                    Enum without default value: Remove value & \checkmark & \bcancel{\checkmark} \\
+                    \hline
+                \end{tabular}
+        \end{center}\label{tab:table}
+    \end{table}
+
+\end{document}

@@ -76,7 +76,7 @@ serialised by `RefData`.
 
 <img src="images/schema-compatibility-matrix.pdf" width="650"/>
 <br/>
-<img src="images/schema-evolution-matrix.pdf" width="1000"/>
+<img src="images/schema-evolution-matrix-v2.pdf" width="650"/>
 
 ## Consumer can deliver business value
 
