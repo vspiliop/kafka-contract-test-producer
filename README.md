@@ -7,9 +7,10 @@ mvn clean compile site:site -o -Dmaven.test.skip
 ```
 
 Generate and push maven documentation site to GitHub Pages. Remember to create and use a Github temp token.
+Execute from command line and provide GitHub username and temp token when asked.
 
 ```
-mvn clean compile site site:stage scm-publish:publish-scm -o -Dmaven.test.skip
+mvnw clean compile site site:stage scm-publish:publish-scm -o -Dmaven.test.skip
 ```
 
 ## Run local Jetty
