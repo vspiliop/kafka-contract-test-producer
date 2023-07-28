@@ -23,7 +23,7 @@ mvn site:run -o
 ## Generate Latex artifacts
 
 ```
-mvn mathan:latex -o
+mvn latex:latex
 ```
 
 ## Generate Plantuml diagrams
