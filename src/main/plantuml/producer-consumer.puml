@@ -1,33 +1,33 @@
 @startuml
 !include ./sprites.puml
 
-package "ESP team" {
+package "Team C" {
   [Kafka Schemas]
 }
 
-package "CRD team" {
-  [RefData]
-  [Contract]
-  [RefData] --> [Contract]: queries
+package "Team B" {
+  [ServiceB1]
+  [ServiceB2]
+  [ServiceB1] --> [ServiceB2]: queries
 }
 
-note top of [RefData]
-A consumer of Contract and
-a producer to Streams
+note top of [ServiceB1]
+A consumer of ServiceB2 and
+a producer to ServiceA1
 end note
 
-note left of [Contract]
+note left of [ServiceB2]
 A producer
-to RefData
+to ServiceB1
 end note
 
-package "MMC team" {
-  [Streams]
+package "Team A" {
+  [ServiceA1]
 }
 
-note right of [Streams]
+note right of [ServiceA1]
 A consumer
-of RefData
+of ServiceB1
 end note
 
 database Artifactory {
@@ -36,11 +36,11 @@ database Artifactory {
 
 queue ti <<$kafka>>
 
-[RefData] --> ti: produces
-ti --> [Streams]: consumes
+[ServiceB1] --> ti: produces
+ti --> [ServiceA1]: consumes
 
-Artifactory -up-> [RefData]: esp-kafka-schemas:7.4.0
-Artifactory -up-> [Streams]: esp-kafka-schemas:7.3.0
+Artifactory -up-> [ServiceB1]: kafka-schemas:7.4.0
+Artifactory -up-> [ServiceA1]: kafka-schemas:7.3.0
 [Kafka Schemas] --> Artifactory: publishes
 
 @enduml

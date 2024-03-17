@@ -5,12 +5,12 @@
 package "Component test" {
   rectangle "mock producer" <<$cog>> as tp
   queue ti <<$kafka>>
-  [Streams]
+  [ServiceA1]
   rectangle verify <<$cog>>
 }
 
 note bottom of tp
-  Mocks RedData service:
+  Mocks ServiceA1 service:
   The runtime producer
 end note
 
@@ -18,10 +18,10 @@ database artifactory as ar {
  rectangle jars
 }
 
-ar -> tp: esp-kafka-producer:7.3.0
+ar -> tp: kafka-schemas:7.3.0
 
 tp -right-> ti: produces
-ti -> [Streams]: consumes
-[Streams] -> verify
+ti -> [ServiceA1]: consumes
+[ServiceA1] -> verify
 
 @enduml

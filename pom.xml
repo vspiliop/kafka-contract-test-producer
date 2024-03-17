@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
+        <version>3.2.3</version>
         <relativePath/>
     </parent>
 
@@ -53,7 +53,7 @@
     <description>Demo project for Kafka producer contract testing</description>
     <properties>
         <java.version>19</java.version>
-        <spring-cloud.version>2022.0.0</spring-cloud.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
         <testcontainers.version>1.17.6</testcontainers.version>
         <avro.version>1.11.1</avro.version>
         <confluent.version>7.3.1</confluent.version>
@@ -210,6 +210,7 @@
                 <version>${maven-site-plugin.version}</version>
                 <configuration>
                     <port>8081</port>
+                    <outputDirectory>${basedir}/target/site/${project.version}</outputDirectory>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -265,6 +266,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <targetSiteDirectory>${basedir}/target/site/${project.version}</targetSiteDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -283,11 +287,11 @@
                                              includes="**/*.png"/>
                                 </copy>
                                 <copy todir="${basedir}/target/generated-site/resources/images">
-                                    <fileset dir="${basedir}/target/site"
+                                    <fileset dir="${basedir}/target/site/${project.version}"
                                              includes="**/*.pdf"/>
                                 </copy>
                                 <copy todir="${basedir}/target/site-webapp/images">
-                                    <fileset dir="${basedir}/target/site"
+                                    <fileset dir="${basedir}/target/site/${project.version}"
                                              includes="**/*.pdf"/>
                                 </copy>
                             </target>
@@ -303,6 +307,7 @@
                 <artifactId>maven-scm-publish-plugin</artifactId>
                 <version>${maven-scm-publish-plugin.version}</version>
                 <configuration>
+                    <basedir></basedir>
                     <scmBranch>gh-pages</scmBranch>
                 </configuration>
             </plugin>

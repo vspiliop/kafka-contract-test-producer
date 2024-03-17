@@ -15,7 +15,7 @@ package "Contract test" as contractTest{
 
   rectangle verify <<$cog>> as ver
   note bottom of db
-   Contract service database
+   ServiceB2 service database
   end note
 }
 
@@ -29,13 +29,13 @@ database artifactory as ar {
 }
 
 note right of ar
-contract-service-stub.jar is
+serviceB2-stub.jar is
 produced by the producer contract
-test of the Contract service
+test of the ServiceB2 service
 end note
 
 tst --> db: creates schema and \n inserts c1 and o1
-ar --> tst: contract-service-stub.jar
+ar --> tst: serviceB2-stub.jar
 ver --> db: verifies c1 and o1
 
 @enduml

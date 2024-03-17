@@ -54,10 +54,10 @@ Contract tests sit between end-to-end and component tests.
 
 # Effective communication requirements
 
-Focusing on `RefData` and `Streams` services.
+Focusing on `ServiceB1` and `ServiceA1` services.
 
-1. Streams can de-serialise the event/ bytes, serialised by RefData
-2. The de-serialised event contains all necessary data for Streams to perform its business logic (has the proper semantics)
+1. ServiceA1 can de-serialise the event/ bytes, serialised by ServiceB1
+2. The de-serialised event contains all necessary data for ServiceA1 to perform its business logic (has the proper semantics)
 
 - (1) and (2) though related, are not the same!
 - A consumer able to de-serialise, does not mean it can deliver its business purpose
@@ -71,8 +71,8 @@ Focusing on `RefData` and `Streams` services.
 
 ## Consumer can read producer data
 
-The avro schemas used by the `Streams Consumer` and `RefData Producer` are compatible, so that `Streams` can de-serialise the bytes,
-serialised by `RefData`.
+The avro schemas used by the `ServiceA1 Consumer` and `ServiceB1 Producer` are compatible, so that `ServiceA1` can de-serialise the bytes,
+serialised by `ServiceB1`.
 
 <img src="images/schema-compatibility-matrix.pdf" width="650"/>
 <br/>
@@ -80,7 +80,7 @@ serialised by `RefData`.
 
 ## Consumer can deliver business value
 
-The de-serialised event contains all necessary data for `Streams` to perform its business logic (has the proper semantics).
+The de-serialised event contains all necessary data for `ServiceA1` to perform its business logic (has the proper semantics).
 
 This can be achieved in two ways:
   - `Components tests`
@@ -95,7 +95,7 @@ Currently, we do a lot of them.
 ![](images/src/main/plantuml/consumer-component-test.png)
 
 Pros:
-- Exist on the Streams (consumer) bitbucket repo
+- Exist on the ServiceA1 (consumer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -105,15 +105,15 @@ Pros:
 Cons:
 - Test mocks the actual producer
 - Stall mocks issues!
-  - RefData (i.e. actual runtime producer) moves to a new esp-kafka-schemas version
-  - RefData service removes an avro optional field that is required from the Streams (i.e. consumer) perspective
+  - ServiceB1 (i.e. actual runtime producer) moves to a new kafka-schemas version
+  - ServiceB1 service removes an avro optional field that is required from the ServiceA1 (i.e. consumer) perspective
 
 #### Producer
 
 ![](images/src/main/plantuml/producer-component-test.png)
 
 Pros:
-- Exist on the RefData (producer) bitbucket repo
+- Exist on the ServiceB1 (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -122,7 +122,7 @@ Pros:
 
 Cons:
 - How does the producer know that it emits events that are actually what the consumer expects? I does not.
-  - Streams requires a particular value of an enum field (e.g. `status` to be `FULFILLED`), but the producer never generates a `FULFILLED` event?
+  - ServiceA1 requires a particular value of an enum field (e.g. `status` to be `FULFILLED`), but the producer never generates a `FULFILLED` event?
 
 ### Contract tests to the rescue
 
@@ -131,7 +131,7 @@ Cons:
 ![](images/src/main/plantuml/consumer-contract-test.png)
 
 Pros:
-- Exist on the RefData (producer) bitbucket repo
+- Exist on the ServiceB1 (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -146,7 +146,7 @@ and an extra one:
 ![](images/src/main/plantuml/producer-contract-test.png)
 
 Pros:
-- Exist on the RefData (producer) bitbucket repo
+- Exist on the ServiceB1 (producer) bitbucket repo
 - Run as part of the build process
 - Fast
 - Stable
@@ -161,7 +161,7 @@ Pros:
 
 How can we trigger the producer to emit the proper event, so that we verify it against its contract?
 
-> Generate RefData Producer input data as part of the contract test
+> Generate ServiceB1 Producer input data as part of the contract test
 
 ![](images/src/main/plantuml/contract-refdata-producer-contract-test.png)
 
@@ -183,7 +183,6 @@ Open Intellij..
   - The consuming service uses the sample event as is for testing these use cases
 - Maybe contract tests should focus on verifying just event structure
 - Is there any benefit of using avro, regarding schema evolution, if you do contract testing?
-- Someone has to do a POC of the whole dev process: from Pull Request to DVA and beyond..
 - What about non JVM producers/ consumer?
-  - OTPm is a C++ Kafka producer
-  - MMC UI is a Nodejs REST consumer
+  - What about non Java producers?
+  - UI is a Nodejs REST consumer
