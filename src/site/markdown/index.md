@@ -159,6 +159,9 @@ Pros:
 
 ##### Triggering the producer
 
+In our use case we have ServiceB1 querying the ServiceB2 DB emitting appropriate data as avro events 
+to the downstream consumers.
+
 How can we trigger the producer to emit the proper event, so that we verify it against its contract?
 
 > Generate ServiceB1 Producer input data as part of the contract test
