@@ -1,12 +1,11 @@
 Kafka avro producer sharing Contract Tests' contracts with downstream consumers, while using Confluent Schema Registry. 
-Check out https://github.com/vspiliop/kafka-contract-test-consumer for checking how to use the published contracts.
+Check out https://github.com/vspiliop/kafka-contract-test-consumer for how to use the published contracts.
 
 Key points:
 - How to define an avro contract on the producer
 - How to share it with downstream consumers
 - How producer makes sure its published contracts are correct or its build will fail
 - How the consumers import the contracts and use them for testing their business logic.
-
 
 ## Generate documentation
 
